@@ -14,19 +14,19 @@ class App():
 
   def clear(self):
     self.blinkt.set_all(0, 0, 0)
-    self.blinkt.show()
+
 
   def busy(self):
     self.blinkt.set_all(255, 0, 0)
-    self.blinkt.show()
+
   
   def working(self):
     self.blinkt.set_all(255, 191, 0)
-    self.blinkt.show()
+
 
   def available(self):
     self.blinkt.set_all(0, 255, 0)
-    self.blinkt.show()
+
 
   def update_leds(self):
     self.blinkt.show()
