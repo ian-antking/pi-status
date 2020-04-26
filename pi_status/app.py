@@ -27,12 +27,14 @@ class App():
   def available(self):
     self.blinkt.set_all(0, 255, 0)
     self.blinkt.show()
+
+  def update_leds(self):
+    self.blinkt.show()
     
 
 if __name__ == '__main__':
   import blinkt
   import buttonshim
-  import signal
 
   app = App(blinkt)
 
@@ -52,5 +54,6 @@ if __name__ == '__main__':
   def button_d(button, presses):
     app.available()
 
-  signal.pause()
+  while True:
+    app.update_leds()
 
