@@ -24,7 +24,7 @@ if __name__ == '__main__':
   import blinkt
   import buttonshim
   import signal
-  import State
+  import state
 
   app = App(State, blinkt)
 
