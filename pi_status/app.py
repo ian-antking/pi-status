@@ -1,11 +1,15 @@
 
 class App():
-  def __init__(self, state, blinkt_manager):
+  def __init__(self, blinkt_manager):
     self.blinkt = blinkt_manager
-    self.state = state
+    self.on = True
+    self.status = 'idle'
 
     self.blinkt.set_brightness(0.1)
     self.clear()
+
+  def toggle_on(self):
+    self.on = not self.on
 
   def clear(self):
     self.blinkt.clear()
@@ -16,6 +20,14 @@ class App():
       self.blinkt.set_pixel(i, 255, 0, 0)
       self.blinkt.show()
 
+  def update_leds(self):
+    if self.state.on:
+      for i in range(8):
+        self.blinkt.set_pixel(i, 255, 0, 0)
+        self.blinkt.show()
+      else:
+        self.clear()
+
   
     
 
@@ -24,13 +36,16 @@ if __name__ == '__main__':
   import blinkt
   import buttonshim
   import signal
-  import state
 
   state_engine = state.Engine()
   app = App(state_engine, blinkt)
 
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, presses):
+    app.toggle_on()
+
+  @buttonshim.on_press(buttonshim.BUTTON_B)
+  def button_b(button, presses):
     app.busy()
 
   signal.pause()
