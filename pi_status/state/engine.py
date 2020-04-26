@@ -1,4 +1,4 @@
-class State:
+class Engine:
   def __init__(self):
     self.on = True
     self.status = 'idle'

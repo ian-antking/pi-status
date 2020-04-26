@@ -26,7 +26,7 @@ if __name__ == '__main__':
   import signal
   import state
 
-  state_engine = state.engine()
+  state_engine = state.Engine()
   app = App(state_engine, blinkt)
 
   @buttonshim.on_press(buttonshim.BUTTON_A)
