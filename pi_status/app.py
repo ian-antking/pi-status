@@ -25,7 +25,7 @@ class App():
     self.blinkt.show()
 
   def available(self):
-    self.blinkt.set_all(0, 0, 255)
+    self.blinkt.set_all(0, 255, 0)
     self.blinkt.show()
     
 
