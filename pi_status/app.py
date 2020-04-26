@@ -9,6 +9,7 @@ class App():
     self.clear()
 
   def toggle_on(self):
+    print('Setting self.on to %s' % self.on)
     self.on = not self.on
 
   def clear(self):
