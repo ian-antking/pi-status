@@ -13,24 +13,13 @@ class App():
     self.on = not self.on
 
   def clear(self):
-    self.blinkt.clear()
+    self.blinkt.set_all(0, 0, 0)
     self.blinkt.show()
 
   def busy(self):
-    self.clear()
     self.blinkt.set_all(255, 0, 0)
-
-  def update_leds(self):
-    if self.state.on:
-      for i in range(8):
-        self.blinkt.set_pixel(i, 255, 0, 0)
-        self.blinkt.show()
-      else:
-        self.clear()
-
-  
+    self.blinkt.show()
     
-
 
 if __name__ == '__main__':
   import blinkt
@@ -41,7 +30,7 @@ if __name__ == '__main__':
 
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, presses):
-    app.toggle_on()
+    app.clear()
 
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, presses):
