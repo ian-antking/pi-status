@@ -19,6 +19,14 @@ class App():
   def busy(self):
     self.blinkt.set_all(255, 0, 0)
     self.blinkt.show()
+  
+  def working(self):
+    self.blinkt.set_all(255, 191, 0)
+    self.blinkt.show()
+
+  def available(self):
+    self.blinkt.set_all(0, 0, 255)
+    self.blinkt.show()
     
 
 if __name__ == '__main__':
@@ -35,6 +43,14 @@ if __name__ == '__main__':
   @buttonshim.on_press(buttonshim.BUTTON_B)
   def button_b(button, presses):
     app.busy()
+
+  @buttonshim.on_press(buttonshim.BUTTON_C)
+  def button_c(button, presses):
+    app.working()
+
+  @buttonshim.on_press(buttonshim.BUTTON_D)
+  def button_d(button, presses):
+    app.available()
 
   signal.pause()
 
