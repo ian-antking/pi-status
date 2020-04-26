@@ -12,6 +12,7 @@ class App():
     self.clear()
     for i in range(8):
       self.blinkt.set_pixel(i, 255, 0, 0)
+      self.blinkt.show()
     
 
 
