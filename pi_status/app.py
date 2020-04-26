@@ -37,7 +37,7 @@ if __name__ == '__main__':
   import buttonshim
   import signal
 
-  app = App(state_engine, blinkt)
+  app = App(blinkt)
 
   @buttonshim.on_press(buttonshim.BUTTON_A)
   def button_a(button, presses):
