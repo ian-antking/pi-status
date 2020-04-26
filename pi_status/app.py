@@ -14,12 +14,11 @@ class App():
 
   def clear(self):
     self.blinkt.clear()
+    self.blinkt.show()
 
   def busy(self):
     self.clear()
-    for i in range(8):
-      self.blinkt.set_pixel(i, 255, 0, 0)
-      self.blinkt.show()
+    self.blinkt.set_all(255, 0, 0)
 
   def update_leds(self):
     if self.state.on:
