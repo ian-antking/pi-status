@@ -1,5 +1,6 @@
 import unicornhat as uh
-from time import sleep
+from time import sleep, time
+import colorsys
 
 class LedManager:
   def __init__(self):
@@ -24,6 +25,17 @@ class LedManager:
     uh.show()
     sleep(1)
 
+  def rainbow(self, _):
+    spacing = 360.0 / 16.0
+    hue = int(time() * 100) % 360
+    for x in range(8):
+        offset = x * spacing
+        h = ((hue + offset) % 360) / 360.0
+        r, g, b = [int(c * 255) for c in colorsys.hsv_to_rgb(h, 1.0, 1.0)]
+        for y in range(4):
+            uh.set_pixel(x, y, r, g, b)
+    uh.show()
+    sleep(0.05)
 
   def update_light(self, color, mode):
     action = getattr(self, mode)
