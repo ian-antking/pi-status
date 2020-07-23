@@ -26,7 +26,7 @@ class LedManager:
     sleep(1)
 
   def rainbow(self, _):
-    spacing = 360.0 / 16.0
+    spacing = 360.0 / 8.0
     hue = int(time() * 100) % 360
     for x in range(8):
         offset = x * spacing
@@ -35,7 +35,7 @@ class LedManager:
         for y in range(4):
             uh.set_pixel(x, y, r, g, b)
     uh.show()
-    sleep(0.05)
+    sleep(0.005)
 
   def update_light(self, color, mode):
     action = getattr(self, mode)
