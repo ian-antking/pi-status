@@ -11,6 +11,7 @@ class App:
     payload = str(message.payload.decode("utf-8"))
     data = json.loads(payload)
     self.color = eval(data["color"]) or self.color
+    self.mode = data["mode"] or self.mode
 
   def update(self):
     self.led_manager.update_light(self.color, self.mode)
