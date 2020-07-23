@@ -2,12 +2,13 @@ import paho.mqtt.client as mqtt
 import signal
 import sys
 from pi_status import App
+from pi_status import LedManager
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-app = App()
+app = App(LedManager())
 
 client = mqtt.Client('pi-status-test')
 client.on_message = app.on_message
