@@ -5,7 +5,7 @@ class App:
     self.color = (168, 168, 168)
     self.mode = "solid"
     self.led_manager = led_manager
-    self.led_manager.update_light(self.color)
+    self.update()
   
   def on_message(self, client, user_date, message):
     payload = str(message.payload.decode("utf-8"))
