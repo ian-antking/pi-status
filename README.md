@@ -19,5 +19,5 @@ cd pi-status && python -m pip install -r requirements.txt
 
 Run the app:
 ```
-python3 app.py
+python3 __main__.py
 ```
