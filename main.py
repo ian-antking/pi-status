@@ -10,7 +10,7 @@ load_dotenv()
 
 app = App(LedManager())
 
-client = mqtt.Client('pi-status-test')
+client = mqtt.Client("DEVICE_NAME")
 client.on_message = app.on_message
 
 client.connect(os.getenv("MQTT_BROKER"))
