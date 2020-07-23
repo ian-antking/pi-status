@@ -5,10 +5,11 @@ class LedManager:
     uh.set_layout(uh.PHAT)
     uh.brightness(0.5)
 
-  def update_light(self, color):
+  def set_light(self, color):
     for x in range(8):
       for y in range(4):
         uh.set_pixel(x, y, *color)
 
-  def show_light(self):
+  def update_light(self, color):
+    self.set_light(color)
     uh.show()
