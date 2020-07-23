@@ -3,7 +3,6 @@ import signal
 import sys
 from pi_status import App
 from dotenv import load_dotenv
-from pathlib import Path
 import os
 
 load_dotenv()
