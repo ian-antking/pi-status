@@ -1,2 +1,2 @@
-blinkt
-buttonshim
+paho-mqtt
+python-dotenv

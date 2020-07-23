@@ -1,59 +1,17 @@
+import json
 
-class App():
-  def __init__(self, blinkt_manager):
-    self.blinkt = blinkt_manager
-    self.on = True
-    self.status = 'idle'
-
-    self.blinkt.set_brightness(0.1)
-    self.clear()
-
-  def toggle_on(self):
-    print('Setting self.on to %s' % self.on)
-    self.on = not self.on
-
-  def clear(self):
-    self.blinkt.set_all(0, 0, 0)
-
-
-  def busy(self):
-    self.blinkt.set_all(255, 0, 0)
-
+class App:
+  def __init__(self, led_manager):
+    self.color = (168, 168, 168)
+    self.mode = "solid"
+    self.led_manager = led_manager
+    self.update()
   
-  def working(self):
-    self.blinkt.set_all(255, 191, 0)
+  def on_message(self, client, user_date, message):
+    payload = str(message.payload.decode("utf-8"))
+    data = json.loads(payload)
+    self.color = eval(data["color"]) or self.color
+    self.mode = data["mode"] or self.mode
 
-
-  def available(self):
-    self.blinkt.set_all(0, 255, 0)
-
-
-  def update_leds(self):
-    self.blinkt.show()
-    
-
-if __name__ == '__main__':
-  import blinkt
-  import buttonshim
-
-  app = App(blinkt)
-
-  @buttonshim.on_press(buttonshim.BUTTON_A)
-  def button_a(button, presses):
-    app.clear()
-
-  @buttonshim.on_press(buttonshim.BUTTON_B)
-  def button_b(button, presses):
-    app.busy()
-
-  @buttonshim.on_press(buttonshim.BUTTON_C)
-  def button_c(button, presses):
-    app.working()
-
-  @buttonshim.on_press(buttonshim.BUTTON_D)
-  def button_d(button, presses):
-    app.available()
-
-  while True:
-    app.update_leds()
-
+  def update(self):
+    self.led_manager.update_light(self.color, self.mode)
