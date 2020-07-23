@@ -3,7 +3,7 @@ from time import sleep
 
 class App:
   def __init__(self, led_manager):
-    self.color = (0,0,0)
+    self.color = (255,255,255)
     self.led_manager = led_manager
     self.led_manager.update_light(self.color)
   
