@@ -2,7 +2,9 @@
 
 ## Getting stated
 
-Set up your raspberry pi with the pimoroni [blinkt](https://shop.pimoroni.com/products/blinkt) and [button SHIM](https://shop.pimoroni.com/products/button-shim).
+Turn the pimorono unicorn pHAT into an internet-of-things controlled lamp.
+
+This app connects to a mosquitto broker and listens for messages containing `color` and `mode` properties.
 
 Clone this repo onto your raspberry pi: 
 
