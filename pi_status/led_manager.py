@@ -10,6 +10,6 @@ class LedManager:
       for y in range(4):
         uh.set_pixel(x, y, *color)
 
-  def update_light(self, color):
+  def update_light(self, color, mode):
     self.set_light(color)
     uh.show()
