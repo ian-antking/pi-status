@@ -2,6 +2,8 @@ import unicornhat as uh
 from time import sleep, time
 import colorsys
 
+off = (0, 0, 0)
+
 class UnicornManager:
   def __init__(self):
     uh.set_layout(uh.PHAT)
@@ -38,10 +40,9 @@ class UnicornManager:
     sleep(0.005)
 
   def alert(self, color):
-    white = (255, 255, 255)
     for x in range(8):
       for y in range(4):
-        pixelColor = color if ((x % 2) == 0 and (y % 2) == 0) or ((x % 2) == 1 and (y % 2) == 1) else white
+        pixelColor = color if ((x % 2) == 0 and (y % 2) == 0) or ((x % 2) == 1 and (y % 2) == 1) else off
         uh.set_pixel(x, y, *pixelColor)
     uh.show()
 
