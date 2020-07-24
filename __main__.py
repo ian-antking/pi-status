@@ -29,11 +29,20 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(args.topic)
     app.ok()
 
+def handle_exception(e):
+  print(e)
+  client.loop_stop()
+  sys.exit(1)
+
 client = mqtt.Client(args.name)
 client.on_connect = on_connect
 client.on_message = app.on_message
 client.loop_start()
-client.connect(args.broker)
+
+try:
+  client.connect(args.broker)
+except Exception as e:
+  handle_exception(e)
 
 while not app.connected:
   print('connecting...')
@@ -49,6 +58,4 @@ while True:
     print("exiting")
     sys.exit()
   except Exception as e:
-    print(e)
-    client.loop_stop()
-    sys.exit()
+    handle_exception(e)
