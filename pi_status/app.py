@@ -10,8 +10,8 @@ class App:
   def on_message(self, client, user_date, message):
     payload = str(message.payload.decode("utf-8"))
     data = json.loads(payload)
-    self.color = eval(data["color"]) or self.color
-    self.mode = data["mode"] or self.mode
+    self.color = eval(data.get("color")) if data.get("color") else self.color
+    self.mode = data.get("mode") or self.mode
 
   def update(self):
     self.led_manager.update_light(self.color, self.mode)
