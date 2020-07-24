@@ -12,7 +12,9 @@ load_dotenv()
 argv = sys.argv[1:]
 opts, args = getopt(argv, "h:", ["hat"])
 
-print(opts, args)
+for opt, arg in opts:
+    if opt in ("-h" or "--hat"):
+      print(arg)
 
 app = App(UnicornManager())
 
