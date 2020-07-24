@@ -13,7 +13,7 @@ argv = sys.argv[1:]
 opts, args = getopt(argv, "h:", ["hat"])
 
 for opt, arg in opts:
-    if opt in ("-h" or "--hat"):
+    if opt in ("-h", "--hat"):
       print(arg)
 
 app = App(UnicornManager())
