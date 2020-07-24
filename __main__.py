@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 import sys
 from pi_status import App, UnicornManager, MockManager
 from argparse import ArgumentParser
-import os
+from time import sleep
 
 
 led_managers = {
@@ -20,13 +20,24 @@ args = parser.parse_args()
 
 app = App(led_managers[args.light]())
 
+def on_connect(client, userdata, flags, rc):
+  if not rc == 0:
+    app.error()
+    print('connection request returned with code %s' % rc)
+  else:
+    print('connection to broker established')
+    app.ok()
+    client.subscribe(args.topic)
+
 client = mqtt.Client(args.name)
+client.on_connect = on_connect
 client.on_message = app.on_message
-
-client.connect(args.broker)
-client.subscribe(args.topic)
-
 client.loop_start()
+client.connect(args.broker)
+
+while not app.connected:
+  print('connecting...')
+  sleep(1)
 
 while True:
   try:
