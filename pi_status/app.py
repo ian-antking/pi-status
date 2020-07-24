@@ -17,10 +17,12 @@ class App:
   def ok(self):
     self.connected = True
     print("waiting for messages")
-    self.led_manager.update_light((168, 168, 168), "solid")
+    self.color = (168, 168, 168)
+    self.mode = "solid"
 
   def error(self):
-    self.led_manager.update_light((168, 0, 0), "blink")
+    self.color = (168, 0, 0)
+    self.mode = "blink"
 
   def update(self):
     self.led_manager.update_light(self.color, self.mode)
