@@ -4,9 +4,15 @@ import sys
 from pi_status import App
 from pi_status import UnicornManager
 from dotenv import load_dotenv
+from getopt import getopt
 import os
 
 load_dotenv()
+
+argv = sys.argv[1:]
+opts, args = getopt(argv, "h:", ["hat"])
+
+print(opts, args)
 
 app = App(UnicornManager())
 
