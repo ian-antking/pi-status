@@ -37,11 +37,11 @@ class UnicornManager:
     uh.show()
     sleep(0.005)
 
-  def error(self, _):
+  def alert(self, color):
     for x in range(8):
       for y in range(4):
-        color = (255, 0, 0)
-        uh.set_pixel(x, y, *color)
+        pixelColor = color if (x % 2) == 0 else (255, 255, 255) 
+        uh.set_pixel(x, y, *pixelColor)
 
   def update_light(self, color, mode):
     action = getattr(self, mode, self.solid)
