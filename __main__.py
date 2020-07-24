@@ -2,13 +2,13 @@ import paho.mqtt.client as mqtt
 import signal
 import sys
 from pi_status import App
-from pi_status import LedManager
+from pi_status import UnicornManager
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-app = App(LedManager())
+app = App(UnicornManager())
 
 client = mqtt.Client("DEVICE_NAME")
 client.on_message = app.on_message

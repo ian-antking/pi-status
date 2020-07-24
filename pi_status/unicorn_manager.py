@@ -2,7 +2,7 @@ import unicornhat as uh
 from time import sleep, time
 import colorsys
 
-class LedManager:
+class UnicornManager:
   def __init__(self):
     uh.set_layout(uh.PHAT)
     uh.brightness(0.5)
