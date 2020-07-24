@@ -40,7 +40,7 @@ class UnicornManager:
   def error(self, _):
     for x in range(8):
       for y in range(4):
-        color = (255, 0, 0) if x % 2 == 0 and y % 2 == 2 else (255, 255, 255)
+        color = (255, 0, 0) if x % 2 == 0 else (255, 255, 255)
         uh.set_pixel(x, y, *color)
 
   def update_light(self, color, mode):
