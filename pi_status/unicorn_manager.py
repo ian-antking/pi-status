@@ -40,7 +40,6 @@ class UnicornManager:
   def alert(self, color):
     for x in range(8):
       for y in range(4):
-        print(x)
         print(x % 2)
         pixelColor = color if (x % 2) == 0 else (255, 255, 255) 
         uh.set_pixel(x, y, *pixelColor)
