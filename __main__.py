@@ -10,10 +10,10 @@ import os
 load_dotenv()
 
 parser = ArgumentParser()
-parser.add_argument("--hat", "-h", required=True, choices=["unicorn-phat"], help="type of hat")
+parser.add_argument("--type", "-t", required=True, choices=["unicorn-phat"], help="type of hat")
 args = parser.parse_args()
 
-print(args.hat)
+print(args.type)
 
 app = App(UnicornManager())
 
