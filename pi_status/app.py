@@ -19,10 +19,12 @@ class App:
     print("waiting for messages")
     self.color = (168, 168, 168)
     self.mode = "solid"
+    self.update()
 
   def error(self):
     self.color = (168, 0, 0)
     self.mode = "error"
+    self.update()
 
   def update(self):
     self.led_manager.update_light(self.color, self.mode)
