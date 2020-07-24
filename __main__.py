@@ -14,7 +14,9 @@ opts, args = getopt(argv, "h:", ["hat"])
 
 for opt, arg in opts:
     if opt in ("-h", "--hat"):
-      print(arg)
+      hat = arg
+
+print(hat)
 
 app = App(UnicornManager())
 
