@@ -53,3 +53,7 @@ This message will cause the light to blink, while leaving the color the same as 
 }
 ```
 
+The current option for `mode` are:
+  - solid
+  - blink
+  - rainbow
