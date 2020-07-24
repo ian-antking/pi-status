@@ -1,12 +1,9 @@
 import paho.mqtt.client as mqtt
-import signal
 import sys
 from pi_status import App, UnicornManager, MockManager
-from dotenv import load_dotenv
 from argparse import ArgumentParser
 import os
 
-load_dotenv()
 
 led_managers = {
   "unicorn-phat": UnicornManager,
@@ -15,16 +12,19 @@ led_managers = {
 
 choices = list(led_managers.keys())
 parser = ArgumentParser()
-parser.add_argument("--light", "-l", required=True, choices=choices, help="type of hat")
+parser.add_argument("--light", "-l", type=str, required=True, choices=choices, help="type of hat")
+parser.add_argument("--broker", "-b", type=str, required=True, help="address of mqtt broker")
+parser.add_argument('--name', '-n', type=str, required=True, help="name of device")
+parser.add_argument('--topic', '-t', type=str, required=True, help="mqtt topic to subscribe to")
 args = parser.parse_args()
 
 app = App(led_managers[args.light]())
 
-client = mqtt.Client("DEVICE_NAME")
+client = mqtt.Client(args.name)
 client.on_message = app.on_message
 
-client.connect(os.getenv("MQTT_BROKER"))
-client.subscribe(os.getenv("TOPIC"))
+client.connect(args.broker)
+client.subscribe(args.topic)
 
 client.loop_start()
 
