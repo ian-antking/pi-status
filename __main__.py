@@ -15,10 +15,10 @@ led_managers = {
 
 choices = list(led_managers.keys())
 parser = ArgumentParser()
-parser.add_argument("--type", "-t", required=True, choices=choices, help="type of hat")
+parser.add_argument("--light", "-l", required=True, choices=choices, help="type of hat")
 args = parser.parse_args()
 
-app = App(led_managers[args.type]())
+app = App(led_managers[args.light]())
 
 client = mqtt.Client("DEVICE_NAME")
 client.on_message = app.on_message
