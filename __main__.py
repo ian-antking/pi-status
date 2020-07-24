@@ -16,6 +16,9 @@ for opt, arg in opts:
     if opt in ("-h", "--hat"):
       hat = arg
 
+if not hat:
+  raise Exception("--hat option required") 
+
 print(hat)
 
 app = App(UnicornManager())
