@@ -8,15 +8,15 @@ import os
 
 load_dotenv()
 
-choices = ["unicorn-phat", "mock"]
-parser = ArgumentParser()
-parser.add_argument("--type", "-t", required=True, choices=choices, help="type of hat")
-args = parser.parse_args()
-
 led_managers = {
   "unicorn-phat": UnicornManager,
   "mock": MockManager
 }
+
+choices = list(led_managers.keys())
+parser = ArgumentParser()
+parser.add_argument("--type", "-t", required=True, choices=choices, help="type of hat")
+args = parser.parse_args()
 
 app = App(led_managers[args.type]())
 
