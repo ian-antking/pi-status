@@ -33,7 +33,7 @@ def handle_exception(e):
   print(e)
   client.loop_stop()
   app.error()
-  sleep(1)
+  sleep(10)
   sys.exit(1)
 
 client = mqtt.Client(args.name)
