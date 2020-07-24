@@ -23,7 +23,7 @@ class App:
 
   def error(self):
     self.color = (168, 0, 0)
-    self.mode = "error"
+    self.mode = "alert"
     self.update()
 
   def update(self):
