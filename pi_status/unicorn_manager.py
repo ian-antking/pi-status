@@ -38,5 +38,5 @@ class UnicornManager:
     sleep(0.005)
 
   def update_light(self, color, mode):
-    action = getattr(self, mode)
+    action = getattr(self, mode, "solid")
     action(color)
