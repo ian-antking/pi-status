@@ -32,6 +32,8 @@ def on_connect(client, userdata, flags, rc):
 def handle_exception(e):
   print(e)
   client.loop_stop()
+  app.error()
+  sleep(1)
   sys.exit(1)
 
 client = mqtt.Client(args.name)
