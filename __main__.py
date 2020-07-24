@@ -1,20 +1,21 @@
 import paho.mqtt.client as mqtt
 import signal
 import sys
-from pi_status import App
-from pi_status import UnicornManager
+from pi_status import App, UnicornManager, MockManager
 from dotenv import load_dotenv
 from argparse import ArgumentParser
 import os
 
 load_dotenv()
 
+choices = ["unicorn-phat", "mock"]
 parser = ArgumentParser()
-parser.add_argument("--type", "-t", required=True, choices=["unicorn-phat"], help="type of hat")
+parser.add_argument("--type", "-t", required=True, choices=choices, help="type of hat")
 args = parser.parse_args()
 
 led_managers = {
-  "unicorn-phat": UnicornManager
+  "unicorn-phat": UnicornManager,
+  "mock": MockManager
 }
 
 app = App(led_managers[args.type]())
