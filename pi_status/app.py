@@ -22,7 +22,7 @@ class App:
 
   def error(self):
     self.color = (168, 0, 0)
-    self.mode = "blink"
+    self.mode = "error"
 
   def update(self):
     self.led_manager.update_light(self.color, self.mode)
