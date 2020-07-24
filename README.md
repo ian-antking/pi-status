@@ -10,17 +10,17 @@ Currently this project is only compatible with the unicorn pHAT. There are plans
 
 Clone this repo onto your raspberry pi: 
 
-```
+```bash
 git clone https://github.com/ian-antking/pi-status.git
 ```
 
 Install the dependencies: 
-```
+```bash
 cd pi-status && python -m pip install -r requirements.txt
 ```
 
 Run the app:
-```
+```bash
 python3 pi-status --light unicorn-phat --broker <address of mqtt broker> --topic <mqtt topic to subscribe to> --name <name of device>
 ```
 
@@ -52,3 +52,4 @@ This message will cause the light to blink, while leaving the color the same as 
   "mode": "blink"
 }
 ```
+
