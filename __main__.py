@@ -12,6 +12,8 @@ load_dotenv()
 argv = sys.argv[1:]
 opts, args = getopt(argv, "h:", ["hat"])
 
+hat = None
+
 for opt, arg in opts:
     if opt in ("-h", "--hat"):
       hat = arg
