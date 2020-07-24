@@ -13,9 +13,11 @@ parser = ArgumentParser()
 parser.add_argument("--type", "-t", required=True, choices=["unicorn-phat"], help="type of hat")
 args = parser.parse_args()
 
-print(args.type)
+led_managers = {
+  "unicorn-phat": UnicornManager
+}
 
-app = App(UnicornManager())
+app = App(led_managers[args.type]())
 
 client = mqtt.Client("DEVICE_NAME")
 client.on_message = app.on_message
