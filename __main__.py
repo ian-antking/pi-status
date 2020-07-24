@@ -11,7 +11,7 @@ load_dotenv()
 
 parser = ArgumentParser()
 parser.add_argument("--hat", "-h", required=True, choices=["unicorn-phat"], help="type of hat")
-arge = parser.parse_args()
+args = parser.parse_args()
 
 print(args.hat)
 
