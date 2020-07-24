@@ -26,8 +26,8 @@ def on_connect(client, userdata, flags, rc):
     print('connection request returned with code %s' % rc)
   else:
     print('connection to broker established')
-    app.ok()
     client.subscribe(args.topic)
+    app.ok()
 
 client = mqtt.Client(args.name)
 client.on_connect = on_connect

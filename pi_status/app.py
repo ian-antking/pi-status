@@ -16,6 +16,7 @@ class App:
   
   def ok(self):
     self.connected = True
+    print("waiting for messages")
     self.led_manager.update_light((168, 168, 168), "solid")
 
   def error(self):
