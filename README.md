@@ -57,3 +57,5 @@ The current option for `mode` are:
   - solid
   - blink
   - rainbow
+  - off
+  - alert
