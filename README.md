@@ -16,17 +16,33 @@ git clone https://github.com/ian-antking/pi-status.git
 
 Install the dependencies: 
 ```bash
-cd pi-status && python -m pip install -r requirements.txt
+python -m pip install -r pi-status/requirements.txt
 ```
 
-Run the app:
+## Running the app
+
+Paste the following script into your terminal. Make sure to replace the variables:
 ```bash
-python3 pi-status --light unicorn-phat --broker <address of mqtt broker> --topic <mqtt topic to subscribe to> --name <name of device>
+BROKER=<BROKER ADDRESS> #the address or ip of your mqtt broker
+TOPIC=<CONSUMER TOPIC> #the topic that your lamp will subscribe to, eg: status/ian
+NAME=<DEVICE NAME> #the name of your lamp, eg: ian-status-lamp
+Light=unicorn-phat #the type of light you have connected to your raspberry pi. Currently only unicorn-phat is supported
+python3 pi-status --light $LIGHT --broker $BROKER --topic $TOPIC --name $NAME
+```
+
+If you want the app to continue running after you close the terminal, add `nohup` to the start of the command:
+
+```bash
+nohup python3 pi-status --light $LIGHT --broker $BROKER --topic $TOPIC --name $NAME
 ```
 
 The app will connect to the mqtt broker and listen for messages from the set topic. The LEDs will light up white when the app is ready to start recieving messages.
 
-Messages sent to that topic should be in JSON format, and can have either a `color` or `mode` property, or both:
+## Controlling the lamp
+
+The lamp is controlled by messages published to the app's topic. [Mqtt Explorer](http://mqtt-explorer.com/) can be used to send messages to your mqtt broker.
+
+Messages sent to the app's topic should be in JSON format, and can have either a `color` or `mode` property, or both:
 
 This message will instruct the app to display white light
 ```json
