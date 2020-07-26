@@ -6,7 +6,7 @@ from time import sleep
 
 
 led_managers = {
-  "unicorn-phat": UnicornManager,
+  "unicorn": UnicornManager,
   "mock": MockManager,
   "blinkt": BlinktManager
 }

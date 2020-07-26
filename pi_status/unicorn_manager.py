@@ -4,7 +4,7 @@ import colorsys
 
 class UnicornManager:
   def __init__(self):
-    uh.set_layout(uh.PHAT)
+    uh.set_layout(uh.AUTO)
     uh.brightness(0.5)
 
   def set_light(self, color):
