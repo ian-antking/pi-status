@@ -2,7 +2,7 @@
 
 ## Getting stated
 
-Turn the pimorono unicorn pHAT or Blinkt into an internet-of-things controlled lamp.
+Turn the pimorono unicorn PHAT/HAT or Blinkt into an internet-of-things controlled lamp.
 
 This app connects to a mosquitto broker and listens for messages containing `color` and `mode` properties. This project requires access to a mqtt broker. You can find instructions on how to do this [here](https://appcodelabs.com/introduction-to-iot-build-an-mqtt-server-using-raspberry-pi) 
 
@@ -24,7 +24,7 @@ Paste the following script into your terminal. Make sure to replace the variable
 BROKER=<BROKER ADDRESS> #the address or ip of your mqtt broker
 TOPIC=<CONSUMER TOPIC> #the topic that your lamp will subscribe to, eg: status/ian
 NAME=<DEVICE NAME> #the name of your lamp, eg: ian-status-lamp
-Light=<LIGHT HAT> #the type of light you have connected to your raspberry pi. Currently unicorn-phat and blinkt is supported
+Light=<LIGHT HAT> #the type of light you have connected to your raspberry pi. Currently unicorn and blinkt are supported
 python3 pi-status --light $LIGHT --broker $BROKER --topic $TOPIC --name $NAME
 ```
 
