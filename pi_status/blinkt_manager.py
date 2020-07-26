@@ -4,7 +4,7 @@ import colorsys
 
 class BlinktManager:
   def __init__(self):
-    set_brightness(0.5)
+    set_brightness(0.1)
 
   def set_light(self, color):
     for x in range(8):
