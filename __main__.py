@@ -1,13 +1,14 @@
 import paho.mqtt.client as mqtt
 import sys
-from pi_status import App, UnicornManager, MockManager
+from pi_status import App, UnicornManager, MockManager, BlinktManager
 from argparse import ArgumentParser
 from time import sleep
 
 
 led_managers = {
   "unicorn-phat": UnicornManager,
-  "mock": MockManager
+  "mock": MockManager,
+  "blinkt": BlinktManager
 }
 
 choices = list(led_managers.keys())
