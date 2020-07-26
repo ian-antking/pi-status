@@ -6,10 +6,11 @@ class UnicornManager:
   def __init__(self):
     uh.set_layout(uh.AUTO)
     uh.brightness(0.5)
+    self.width,self.height=uh.get_shape()
 
   def set_light(self, color):
-    for x in range(8):
-      for y in range(4):
+    for x in range(self.width):
+      for y in range(self.height):
         uh.set_pixel(x, y, *color)
     uh.show()
 
@@ -30,19 +31,19 @@ class UnicornManager:
   def rainbow(self, _):
     spacing = 360.0 / 8.0
     hue = int(time() * 100) % 360
-    for x in range(8):
+    for x in range(self.width):
         offset = x * spacing
         h = ((hue + offset) % 360) / 360.0
         r, g, b = [int(c * 255) for c in colorsys.hsv_to_rgb(h, 1.0, 1.0)]
-        for y in range(4):
+        for y in range(self.height):
             uh.set_pixel(x, y, r, g, b)
     uh.show()
     sleep(0.005)
 
   def alert(self, color):
     off = (0, 0, 0)
-    for x in range(8):
-      for y in range(4):
+    for x in range(self.width):
+      for y in range(self.height):
         pixelColor = color if ((x % 2) == 0 and (y % 2) == 0) or ((x % 2) == 1 and (y % 2) == 1) else off
         uh.set_pixel(x, y, *pixelColor)
     uh.show()
