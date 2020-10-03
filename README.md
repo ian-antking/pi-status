@@ -2,7 +2,7 @@
 
 ## Getting stated
 
-Turn the pimorono unicorn PHAT/HAT or Blinkt into an internet-of-things controlled lamp.
+Turn the pimoroni unicorn PHAT/HAT or Blinkt into an internet-of-things controlled lamp.
 
 This app connects to a mosquitto broker and listens for messages containing `color` and `mode` properties. This project requires access to a mqtt broker. You can find instructions on how to do this [here](https://appcodelabs.com/introduction-to-iot-build-an-mqtt-server-using-raspberry-pi) 
 
