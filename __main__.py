@@ -15,13 +15,14 @@ choices = list(led_managers.keys())
 parser = ArgumentParser()
 parser.add_argument("--light", "-l", type=str, required=True, choices=choices, help="type of hat")
 parser.add_argument("--broker", "-b", type=str, required=True, help="address of mqtt broker")
+parser.add_argument("--port", "-p", type=str, required=False, help="port to access mqtt broker", default="1887")
 parser.add_argument('--name', '-n', type=str, required=True, help="name of device")
 parser.add_argument('--topic', '-t', type=str, required=True, help="mqtt topic to subscribe to")
 args = parser.parse_args()
 
 app = App(led_managers[args.light]())
 
-def on_connect(client, userdata, flags, rc):
+def on_connect(client, _, __, rc):
   if not rc == 0:
     app.error()
     print('connection request returned with code %s' % rc)
@@ -43,7 +44,7 @@ client.on_message = app.on_message
 client.loop_start()
 
 try:
-  client.connect(args.broker)
+  client.connect(args.broker, args.port)
 except Exception as e:
   handle_exception(e)
 
